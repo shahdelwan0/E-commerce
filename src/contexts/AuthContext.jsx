@@ -36,15 +36,21 @@ export function AuthProvider({ children }) {
     return res;
   }
 
-  async function register(userData) {
+ async function register(userData) {
+  try {
     const res = await authApi.registerUser(userData);
     if (res.token) {
       localStorage.setItem(TOKEN_KEY, res.token);
       setToken(res.token);
     }
     setUser(res.user || null);
+    console.log("✅ Register successful:", res); // 👈
     return res;
+  } catch (err) {
+    console.log("Register error details:", err.response?.data);
+    throw err;
   }
+}
 
   function logout() {
     localStorage.removeItem(TOKEN_KEY);
