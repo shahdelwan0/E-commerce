@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   --color-primary: #ef4444; /* red-500 */
   --color-accent: #f97316; /* orange-500 */
